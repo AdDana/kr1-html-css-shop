@@ -11,7 +11,7 @@
   <meta property="og:title" content="Учебный интернет-магазин">
   <meta property="og:description" content="Учебный frontend-проект интернет-магазина.">
   <meta property="og:image" content="https://username.github.io/kr1-html-css-shop/images/preview.jpg">
-
+  <script src="js/main.js" defer></script>
 </head>
 <body>
   <header class="site-header">
@@ -89,34 +89,201 @@
             <h2>Список товаров</h2>
 
             <div class="products-grid">
-                <article class="product-card">
-                    <h3 class="product-card__title">Товар 1</h3>
-                    <p class="product-card__description">Краткое описание учебного товара.</p>
-                    <p class="product-card__price">Цена: 1000 руб.</p>
-                    <a class="button button--primary" href="index.html#popular">Подробнее</a>
+                <article class="product-card" data-price="799" data-currency="CNY">
+                    <img
+                        class="product-card__image"
+                        src="images/kuricha-maid.jpg"
+                        alt="Фигурка Kuricha Maid"
+                        width="400"
+                        height="400"
+                    >
+                    <h3 class="product-card__title">Kuricha Maid</h3>
+                    <p class="product-card__description">
+                        Производитель: Poi Art<br>
+                        Размер: 1/6<br>
+                        Релиз: 4 квартал 2026
+                    </p>
+                    <p class="product-card__price">Цена: 799 юаней
+                    <span class="product-card__price-rub"></span>
+                    </p>
+                    <button class="button button--primary product-card__button" type="button" data-product="Kuricha Maid">
+                        Заказать</button>
                 </article>
 
-                <article class="product-card">
-                    <h3 class="product-card__title">Товар 2</h3>
-                    <p class="product-card__description">Краткое описание учебного товара.</p>
-                    <p class="product-card__price">Цена: 1500 руб.</p>
-                    <a class="button button--primary" href="index.html#popular">Подробнее</a>
+                <article class="product-card" data-price="22000" data-currency="JPY">
+                    <img
+                        class="product-card__image"
+                        src="images/kangel-anniv.jpg"
+                        alt="Фигурка KAngel Anniv."
+                        width="400"
+                        height="400"
+                    >
+                    <h3 class="product-card__title">KAngel: Anniv. Ver.</h3>
+                    <p class="product-card__description">
+                        Производитель: GSC<br>
+                        Размер: 1/7<br>
+                        Релиз: Июль 2026
+                    </p>
+                    <p class="product-card__price">Цена: 22000 йен
+                    <span class="product-card__price-rub"></span>
+                    </p>
+                    <button class="button button--primary product-card__button" type="button" data-product="KAngel Anniv.">
+                        Заказать</button>
                 </article>
 
-                <article class="product-card">
-                    <h3 class="product-card__title">Товар 3</h3>
-                    <p class="product-card__description">Краткое описание учебного товара.</p>
-                    <p class="product-card__price">Цена: 2000 руб.</p>
-                    <a class="button button--primary" href="index.html#popular">Подробнее</a>
+                <article class="product-card" data-price="698" data-currency="CNY">
+                    <img
+                        class="product-card__image"
+                        src="images/a-z-b.jpg"
+                        alt="Фигурка A-Z(B)"
+                        width="400"
+                        height="400"
+                    >
+                    <h3 class="product-card__title">A-Z:[B]</h3>
+                    <p class="product-card__description">
+                        Производитель: Myethos<br>
+                        Размер: 1/7<br>
+                        Релиз: Август 2025
+                    </p>
+                    <p class="product-card__price">Цена: 698 юаней
+                    <span class="product-card__price-rub"></span>
+                    </p>
+                    <button class="button button--primary product-card__button" type="button" data-product="A-Z(B)">
+                        Заказать</button>
+                </article>
+
+                <article class="product-card" data-price="799" data-currency="CNY">
+                    <img
+                        class="product-card__image"
+                        src="images/ame.jpg"
+                        alt="Фигурка Ame"
+                        width="400"
+                        height="400"
+                    >
+                    <h3 class="product-card__title">Ame</h3>
+                    <p class="product-card__description">
+                        Производитель: Apex-Toys<br>
+                        Размер: 1/7, 27.5 см<br>
+                        Релиз: Сентябрь 2026
+                    </p>
+                    <p class="product-card__price">Цена: 799 юаней
+                    <span class="product-card__price-rub"></span>
+                    </p>
+                    <button class="button button--primary product-card__button" type="button" data-product="Ame">
+                        Заказать</button>
+                </article>
+
+                <article class="product-card" data-price="19800" data-currency="JPY">
+                    <img
+                        class="product-card__image"
+                        src="images/kangel.jpg"
+                        alt="Фигурка KAngel"
+                        width="400"
+                        height="400"
+                    >
+                    <h3 class="product-card__title">KAngel</h3>
+                    <p class="product-card__description">
+                        Производитель: GSC<br>
+                        Размер: 1/7, 23 см<br>
+                        Релиз: Февраль 2027
+                    </p>
+                    <p class="product-card__price">Цена: 19 800 йен
+                    <span class="product-card__price-rub"></span>
+                    </p>
+                    <button class="button button--primary product-card__button" type="button" data-product="KAngel">
+                        Заказать</button>
+                </article>
+
+                <article class="product-card" data-price="999" data-currency="CNY">
+                    <img
+                        class="product-card__image"
+                        src="images/saya.jpg"
+                        alt="Фигурка Saya"
+                        width="400"
+                        height="400"
+                    >
+                    <h3 class="product-card__title">Saya</h3>
+                    <p class="product-card__description">
+                        Производитель: Magi Arts<br>
+                        Размер: 1/6, 28 см<br>
+                        Релиз: Февраль 2027
+                    </p>
+                    <p class="product-card__price">Цена: 999 юаней
+                    <span class="product-card__price-rub"></span>
+                    </p>
+                    <button class="button button--primary product-card__button" type="button" data-product="Saya">
+                        Заказать</button>
                 </article>
             </div>
         </section>
     </section>
   </main>
 
-  <footer class="site-footer">
-    <p>&copy; 2026 Учебный проект. Все права защищены.</p>
-    <p>Дисциплина: Фронтенд и бэкенд разработка</p>
-  </footer>
+    <footer class="site-footer">
+    <div class="site-footer__inner">
+        <p>&copy; 2026 Учебный проект. Все права защищены.</p>
+        <p>Дисциплина: Фронтенд и бэкенд разработка</p>
+    </div>
+    </footer>
+
+    <dialog class="order-dialog" id="order-dialog" aria-labelledby="order-dialog-title">
+    <h2 class="order-dialog__title" id="order-dialog-title">Оформление заявки</h2>
+
+    <form class="order-form" id="order-form" action="#" method="post" novalidate>
+        <input id="selected-product" name="selected-product" type="hidden">
+
+        <div class="order-form__field">
+        <label class="order-form__label" for="order-name">Имя</label>
+        <input class="order-form__input" id="order-name" name="name" type="text" placeholder="Введите ваше имя" minlength="2" autocomplete="given-name" required>
+        </div>
+
+        <div class="order-form__field">
+        <label class="order-form__label" for="order-email">E-mail</label>
+        <input class="order-form__input" id="order-email" name="email" type="email" placeholder="example@mail.ru" autocomplete="email" required>
+        </div>
+
+        <div class="order-form__field">
+        <label class="order-form__label" for="order-phone">Телефон</label>
+        <input class="order-form__input" id="order-phone" name="phone" type="tel" inputmode="tel" placeholder="+7 (900) 000-00-00" pattern="^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$" required>
+        <small>Формат: +7 (900) 000-00-00</small>
+        </div>
+
+        <div class="order-form__field">
+        <label class="order-form__label" for="order-date">Дата связи</label>
+        <input class="order-form__input" id="order-date" name="date" type="date">
+        </div>
+
+        <div class="order-form__field">
+        <label class="order-form__label" for="order-topic">Тема заявки</label>
+        <select class="order-form__select" id="order-topic" name="topic" required>
+            <option value="">Выберите тему</option>
+            <option value="product">Заказ товара</option>
+            <option value="consultation">Консультация</option>
+            <option value="delivery">Доставка</option>
+        </select>
+        </div>
+
+        <div class="order-form__field">
+        <label class="order-form__label" for="order-comment">Комментарий</label>
+        <textarea class="order-form__textarea" id="order-comment" name="comment" rows="4" placeholder="Укажите дополнительную информацию"></textarea>
+        </div>
+
+        <div class="order-form__field order-form__field--checkbox">
+        <label class="order-form__label">
+            <input class="order-form__input" id="order-agreement" name="agreement" type="checkbox" required>
+            Я согласен на обработку данных
+        </label>
+        </div>
+
+        <div class="order-form__actions">
+        <button class="button button--secondary" type="button" id="close-order-dialog">Закрыть</button>
+        <button class="button button--primary" type="submit">Отправить заявку</button>
+        </div>
+    </form>
+    </dialog>
+
+    <p class="success-message" id="success-message" hidden>
+    Форма успешно отправлена!
+    </p>
 </body>
 </html>

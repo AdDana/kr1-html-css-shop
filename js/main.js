@@ -13,21 +13,18 @@ const selectedProductInput = document.getElementById('selected-product');
 // Перебираем все кнопки «Заказать».
 orderButtons.forEach((button) => {
   button.addEventListener('click', () => {
-    // Получаем название товара из data-атрибута.
     const productName = button.dataset.product;
-
-    // Записываем название товара в скрытое поле формы.
     selectedProductInput.value = productName;
-
-    // Открываем модальное окно.
     orderDialog.showModal();
   });
 });
 
 // Закрываем модальное окно по кнопке «Закрыть».
-closeDialogButton.addEventListener('click', () => {
-  orderDialog.close();
-});
+if (closeDialogButton && orderDialog) {
+  closeDialogButton.addEventListener('click', () => {
+    orderDialog.close();
+  });
+}
 
 // Получаем форму заявки.
 const orderForm = document.getElementById('order-form');
@@ -36,39 +33,64 @@ const orderForm = document.getElementById('order-form');
 const successMessage = document.getElementById('success-message');
 
 // Обрабатываем отправку формы.
-orderForm.addEventListener('submit', (event) => {
-  // Отменяем стандартную отправку формы,
-  // потому что backend пока не подключён.
-  event.preventDefault();
+if (orderForm) {
+  orderForm.addEventListener('submit', (event) => {
+    event.preventDefault();
 
-  // Сбрасываем предыдущие признаки ошибок.
-  const formElements = Array.from(orderForm.elements);
+    const formElements = Array.from(orderForm.elements);
 
-  formElements.forEach((element) => {
-    if (element.willValidate) {
-      element.removeAttribute('aria-invalid');
-    }
-  });
-
-  // Проверяем встроенные HTML-ограничения формы.
-  if (!orderForm.checkValidity()) {
     formElements.forEach((element) => {
-      if (element.willValidate && !element.checkValidity()) {
-        element.setAttribute('aria-invalid', 'true');
+      if (element.willValidate) {
+        element.removeAttribute('aria-invalid');
       }
     });
 
-    // Показываем стандартные сообщения браузера.
-    orderForm.reportValidity();
-    return;
+    if (!orderForm.checkValidity()) {
+      formElements.forEach((element) => {
+        if (element.willValidate && !element.checkValidity()) {
+          element.setAttribute('aria-invalid', 'true');
+        }
+      });
+
+      orderForm.reportValidity();
+      return;
+    }
+
+    successMessage.hidden = false;
+    orderForm.reset();
+    orderDialog.close();
+  });
+}
+
+async function loadRates() {
+  try {
+    const res = await fetch('https://www.cbr-xml-daily.ru/daily_json.js');
+    if (!res.ok) throw new Error('Ошибка загрузки курсов');
+    const data = await res.json();
+    return {
+      CNY: data.Valute.CNY.Value,
+      JPY: data.Valute.JPY.Value / 100
+    };
+  } catch (e) {
+    console.error('Не удалось загрузить курсы:', e);
+    return { CNY: 12.5, JPY: 0.54 };
   }
+}
 
-  // Показываем сообщение об успешной отправке.
-  successMessage.hidden = false;
+async function updatePrices() {
+  const rates = await loadRates();
 
-  // Очищаем форму.
-  orderForm.reset();
+  document.querySelectorAll('.product-card').forEach(card => {
+    const price = parseFloat(card.dataset.price);
+    const currency = card.dataset.currency;
+    const rate = rates[currency];
 
-  // Закрываем модальное окно.
-  orderDialog.close();
-});
+    if (rate) {
+      const rub = Math.round(price * rate);
+      const rubEl = card.querySelector('.product-card__price-rub');
+      if (rubEl) rubEl.textContent = ` (~${rub} ₽)`;
+    }
+  });
+}
+
+updatePrices();

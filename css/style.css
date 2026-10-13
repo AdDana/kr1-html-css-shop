@@ -4,19 +4,19 @@
 
 :root {
   /* Основные цвета проекта */
-  --color-bg: #ffffff;
-  --color-text: #222222;
-  --color-muted: #666666;
-  --color-primary: #0057b8;
-  --color-primary-dark: #003f86;
-  --color-border: #dddddd;
-  --color-surface: #f7f7f7;
-  --color-surface-accent: #eef5ff;
+  --color-bg: #fff5f8;
+  --color-text: #4a1e2e;
+  --color-muted: #a86478;
+  --color-primary: #bb6c88;
+  --color-primary-dark: #a45d75;
+  --color-surface: #f7eef1;
+  --color-surface-accent: #ebd2da;
+  --color-border: #dcc5cd;
   --color-danger: #b00020;
   --color-success: #168a2f;
   --color-success-bg: #eefaf0;
   --color-white: #ffffff;
-
+  
   /* Отступы */
   --space-xs: 4px;
   --space-sm: 8px;
@@ -96,6 +96,7 @@ a:focus-visible {
   Простое состояние наведения для основной кнопки.
 */
 .button--primary:hover {
+  color: var(--color-white);
   background-color: var(--color-primary-dark);
 }
 
@@ -220,7 +221,10 @@ html {
   max-width: var(--container-width);
   margin: 0 auto var(--space-xl);
   padding: var(--space-xl) var(--space-lg);
-  background-color: var(--color-surface-accent);
+  background-image: url('../images/bg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   border-radius: var(--radius-lg);
 }
 
@@ -257,6 +261,15 @@ html {
   border-color: var(--color-primary);
 }
 
+.product-card__image {
+  display: block;
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  object-position: 50% 30%;
+  border-radius: var(--radius-md);
+  margin-bottom: var(--space-sm);
+}
 /*
   Убираем лишний верхний отступ у заголовка карточки.
 */
@@ -313,6 +326,11 @@ html {
 */
 .site-footer {
   background-color: var(--color-surface);
+}
+
+.site-footer__inner {
+  max-width: var(--container-width);
+  margin: 0 auto;
   padding: var(--space-lg);
 }
 
@@ -335,6 +353,19 @@ html {
 
 .catalog-products {
   grid-area: products;
+}
+
+.advantages-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: var(--space-sm);
+}
+
+.advantages-list li {
+  position: relative;
+  padding-left: var(--space-lg);
 }
 
 .filters-form {
